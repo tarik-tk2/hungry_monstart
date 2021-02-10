@@ -62,10 +62,11 @@ const  serchData=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data}`;
       const iteam=  document.getElementById("iteam");
       iteam.style.display="block";
       const createDiv= document.createElement("div");
+      createDiv.id="ingident";
       const itemDetails=`
       
 <Button onClick=closeClick() type="button" class="btn btn-danger align-align-items-end">Close</Button>
-      <div><img src='${data.meals[0].strMealThumb}'></img>
+      <div ><img src='${data.meals[0].strMealThumb}'></img>
      <h3>Ingradients</h3>
       <div class="ingridents">
       <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient1}
@@ -102,10 +103,7 @@ function closeClick(){
   
    const searchelElement= document.getElementById("search-meal");
         searchelElement.style.display="grid";
-
-    
-
-    document.getElementById("iteam").remove();
-
+  const ingredient=  document.getElementById("ingident");
+    document.getElementById("iteam").removeChild(ingredient);
 }
    
