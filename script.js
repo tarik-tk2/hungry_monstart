@@ -2,7 +2,9 @@ const name=  document.getElementById("search");
  document.getElementById("button").addEventListener('click',function(e){
  const showMeal=document.getElementById("show-meal");
  showMeal.style.display='none'
+  
  const mainDiv= document.getElementById("search-meal")
+ const change= document.getElementById("change").innerText="Available Search...."
  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name.value}`).then(res=>res.json()).then(data=>{
  const dataCollection =data.meals;
  console.log(dataCollection);
@@ -10,8 +12,10 @@ const name=  document.getElementById("search");
  for(let i=0;i<dataCollection.length;i++) {
  console.log(dataCollection[i])
     const createSingleDiv= document.createElement('div');
-    const  singleFood=`<div class="items"><a ><div><img  onClick='foodDetails(${dataCollection[i].idMeal})' src="${dataCollection[i].strMealThumb}"></img></div><p>${dataCollection[i].strMeal}</p></a></div>` ;  
+
+    const  singleFood=`<a><div class="header"><img onClick='foodDetails(${dataCollection[i].idMeal})' src="${dataCollection[i].strMealThumb}"></img></div><div class="bottom"><p>${dataCollection[i].strMeal}</p></div></a>` ;  
     createSingleDiv.innerHTML=singleFood;
+
     mainDiv.appendChild(createSingleDiv)
  }
 
@@ -22,14 +26,9 @@ mainDiv.innerHTML=''
    })
 
 
+// <div class="items"><a ><div><img  onClick='foodDetails(${dataCollection[i].idMeal})' src="${dataCollection[i].strMealThumb}"></img></div><p>${dataCollection[i].strMeal}</p></a></div>
 
 
-
-
-
-
-// `<a href="https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dataLength[i].idCategory}"><img src=${dataLength[i].strCategoryThumb}></img>
-//                             <p>${dataLength[i].strCategory}</p></a>`;
 
 showLatestMeal();
 
@@ -39,15 +38,15 @@ function showLatestMeal(){
         .then((data) => {
           const dataLength = data.categories;
           const mainDiv = document.getElementById("show-meal");
+      const change= document.getElementById("change").innerText="Latest Catagories...."
           for (let i = 0; i < dataLength.length; i++) {
             // console.log(dataLength[i]);
             const divCreate = document.createElement("div");
-            divCreate.className = "food";
-            console.log(dataLength[i])
+            divCreate.className='items'
             foodDetails(dataLength[i])
-            console.log(dataLength[i].idMeal)
-            const foodIcon =`<div class="items"><a  ><div><img onClick='foodDetails(${dataLength[i].idMeal})' src="${dataLength[i].strCategoryThumb}"></img></div><p>${dataLength[i].strCategory}</p></a></div>` ;
+            const foodIcon =`<a><div class="header"><img onClick='foodDetails(${dataLength[i].idMeal})' src="${dataLength[i].strCategoryThumb}"></img></div><div class="bottom"><p>${dataLength[i].strCategory}</p></div></a>` ;
             divCreate.innerHTML = foodIcon;
+            
             mainDiv.appendChild(divCreate);
           }
         });
@@ -56,8 +55,7 @@ function showLatestMeal(){
 
 }
  function foodDetails(data){
- //   document.getElementById(overview).style.display='none'
-//   const showFood= document.getElementById('iteam');
+
 const  serchData=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data}`;
   fetch(serchData).then(rep=>rep.json()).then(
      data=>{
@@ -65,20 +63,23 @@ const  serchData=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data}`;
       const createDiv= document.createElement("div");
       const itemDetails=`<div><img src='${data.meals[0].strMealThumb}'></img>
      <h3>Ingradients</h3>
-      <p>${data.meals[0].strIngredient1}</p>
-      <p>${data.meals[0].strIngredient2}</p>
-      <p>${data.meals[0].strIngredient3}</p>
-      <p>${data.meals[0].strIngredient4}</p>
-      <p>${data.meals[0].strIngredient5}</p>
-      <p>${data.meals[0].strIngredient6}</p>
-      <p>${data.meals[0].strIngredient7}</p>
-      <p>${data.meals[0].strIngredient8}</p>
-      <p>${data.meals[0].strIngredient9}</p>
-      <p>${data.meals[0].strIngredient10}</p>
-      <p>${data.meals[0].strIngredient11}</p>
+      <div class="ingridents">
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient1}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient2}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient3}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient4}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient5}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient6}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient7}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient8}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient9}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient10}</p>
+      
+      </div>
+      
     
       </div>`
-         document.getElementById('overview').style.display='none'
+         document.getElementById('over-view').style.display='none'
         createDiv.innerHTML=itemDetails;
         iteam.appendChild(createDiv);
         console.log(iteam)

@@ -1,29 +1,62 @@
 body {
   background-color: white;
-  padding-top:100px;
-  text-align:center;
+  padding-top: 100px;
+  text-align: center;
+}
+h4 {
+  padding: 50px;
+  text-align: center;
+  display: block;
+}
+#search-box {
+  width: 400px;
+  margin: auto;
+}
+
+#over-view {
+  margin: auto;
+  width: 80%;
+}
+#show-meal,
+#search-meal {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 30px;
+  column-gap: 30px;
+  text-align: center;
+  justify-items: center;
+}
+.header {
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 10px 10px 40px whitesmoke;
+  text-align: center;
+}
+.bootom {
+  padding: 10px;
+  border-radius: 10px;
+}
+.items {
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0px 10px 40px rgb(175, 173, 173);
+}
+.header > img {
+  margin: auto;
+  width: 80%;
+}
+.ingridents {
+  text-align: left;
+}
+#iteam {
+  width: 30%;
+  margin: auto;
+  border-radius: 10px;
   
 }
-h4{
-    padding: 50px;
-}
-#search-box{
-    width:400px;
-    margin: auto;
-}
-#list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 50px;
-  text-align: center;
-  item-align:center;
-}
-.food {
-  width: 300px;
-  height: 250px;
-  border-radius: 20px;
-  box-shadow: 10px 10px 30px whitesmoke;
-}
-.overview{
-  display: none;
+#iteam>div>div>img{
+width: 100%;
+height:300px;
+border-radius: 10px;
 }
