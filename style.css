@@ -1,0 +1,29 @@
+body {
+  background-color: white;
+  padding-top:100px;
+  text-align:center;
+  
+}
+h4{
+    padding: 50px;
+}
+#search-box{
+    width:400px;
+    margin: auto;
+}
+#list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 50px;
+  text-align: center;
+  item-align:center;
+}
+.food {
+  width: 300px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 30px whitesmoke;
+}
+.overview{
+  display: none;
+}
