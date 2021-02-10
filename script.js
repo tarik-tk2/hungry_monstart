@@ -60,26 +60,36 @@ const  serchData=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data}`;
   fetch(serchData).then(rep=>rep.json()).then(
      data=>{
       const iteam=  document.getElementById("iteam");
+      iteam.style.display="block";
       const createDiv= document.createElement("div");
-      const itemDetails=`<div><img src='${data.meals[0].strMealThumb}'></img>
+      const itemDetails=`
+      
+<Button onClick=closeClick() type="button" class="btn btn-danger align-align-items-end">Close</Button>
+      <div><img src='${data.meals[0].strMealThumb}'></img>
      <h3>Ingradients</h3>
       <div class="ingridents">
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient1}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient2}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient3}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient4}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient5}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient6}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient7}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient8}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient9}</p>
-      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient10}</p>
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient1}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient2}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient3}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient4}</p>
+     
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient5}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient6}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient8}
+      <i class="fas fa-check-square"></i>${data.meals[0].strIngredient7}</p>
+      
+ 
+      <p><i class="fas fa-check-square"></i>${data.meals[0].strIngredient9}
+     <i class="fas fa-check-square"></i>${data.meals[0].strIngredient10}
+     <i class="fas fa-check-square"></i>${data.meals[0].strIngredient11}
+     <i class="fas fa-check-square"></i>${data.meals[0].strIngredient12}</p>
       
       </div>
       
     
-      </div>`
-         document.getElementById('over-view').style.display='none'
+      </div> 
+    ` 
+     document.getElementById("search-meal").style.display="none";
         createDiv.innerHTML=itemDetails;
         iteam.appendChild(createDiv);
         console.log(iteam)
@@ -88,12 +98,14 @@ const  serchData=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${data}`;
 
  }
 
-// document.getElementById("search-meal").addEventListener("click",function(target){
-//  document.getElementById("overview").style.display="none"
-//  console.log(this,target);
+function closeClick(){
+  
+   const searchelElement= document.getElementById("search-meal");
+        searchelElement.style.display="grid";
+
     
-// })
-// document.getElementById("show-meal").addEventListener("click",function(target){
-//     document.getElementById("overview").blur();
-//    console.log(this,target);
-// })
+
+    document.getElementById("iteam").remove();
+
+}
+   
